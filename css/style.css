@@ -1,0 +1,65 @@
+body {
+	background-color: #a2c0f2;
+	font-family: 'Bungee Shade', cursive;
+	margin: 50px 0;
+	text-align: center;
+}
+#title {
+	font-size: 2.5em;
+	margin: 25px 0 50px;
+}
+
+#turn {
+	font-family: 'Bungee Inline', cursive;
+	margin: 15px 0;
+}
+.row {
+	height: 101px;
+}
+
+/* border setup */
+.box:nth-child(3) {
+	border-right: 1px solid black;
+}
+.row:nth-child(3)>.box:nth-child(n) {
+	border-bottom: 1px solid black;
+}
+
+.box {
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	background-color: #6d95d6;
+	text-align: center;
+	font-size: 3.8em;
+}
+.box:hover {
+	background-color: #88a9dd;
+}
+
+/* GAME OVER WINDOW */
+#gameover {
+	font-family: 'Bungee Inline', cursive;
+	background-color: #bfd8ff;
+	padding: 20px;
+	width: 400px;
+	border-radius: 4px;
+	position: fixed;
+	top: 250px;
+	left: 75px;
+	text-align: center;
+}
+#gameover>button {
+	font-family: 'Bungee Inline', cursive;
+	width: 150px;
+	border-radius: 5px;
+	font-size: 1em;
+	border: none;
+	padding: 15px;
+	background-color: #a2c0f2;
+}
+#gameover>button:hover {
+	background-color: #6d95d6;
+}
