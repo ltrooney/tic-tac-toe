@@ -1,22 +1,16 @@
 // game planning
 //
 // objects:
-// - Position
-//	 	var int:x
-//		var int:y
 // - Piece(symbol)
-//   	var Position:position
 //		var String:symbol
 //		placeAt(Position): places the game piece at that position
-//		getPosition(): returns the position of the piece on the board
-// - Player
-//		var occupiedSpaces[Position]
 // - Board
 //		var String:board[r][c]: 2d array 
-//		numEmptySquares(): counts number of empty squares
+//		newBoard(): resets the board array
+//		getSymbolOfPieceAt(): gets the symbol of the players piece at (row, col)
+//		placePiece(row, col, symbol): places a piece at (row, col)
 //		containsWin(): determines if there is a winning configuration
 //		render(): draws the board configuration
-//		clear(): clears the board
 // - Game
 //		const var int:PVP = 0
 //		const var int:PVC = 1
@@ -24,30 +18,19 @@
 //		start(): starts the game
 //		restart(): resets the game
 //		setGameMode(mode): sets game mode to PvP or PvC
-//		displayWinner(): displays the game winner 
-//		isPlayer1Turn(): determines whose turn it is
-//		getMove(): gets the next player's move
 
 var Modes = {
 	PVP: 0,
 	PVC: 1,
 }
 var emptySymbol = "&nbsp;";
-/*
-var Position = function(x, y) {
-	this.x = x;
-	this.y = y;
-}
-*/
 
 var Piece = function(symbol) {
 	this.symbol = symbol;
-	var position = null;
 }
 Piece.prototype.placeAt = function(position) {
 	this.position = position;
 };
-Piece.prototype.getPosition = function() { return this.position; }
 Piece.prototype.getSymbol = function() { return this.symbol; }
 
 var gameBoard = {
@@ -61,15 +44,6 @@ var gameBoard = {
 			b.push([new Piece(emptySymbol), new Piece(emptySymbol), new Piece(emptySymbol)]);
 		}
 		return b;
-	},
-	numEmptySquares: function() {
-		var squares = 0;
-		for(var r = 0; r < 3; r++) {
-			for(var c = 0; c < 3; c++) {
-				if(this.getSymbolOfPieceAt(r,c) === emptySymbol) squares++;
-			}
-		}
-		return squares;
 	},
 	getSymbolOfPieceAt: function(r, c) {
 		return gameBoard.board[r][c].getSymbol();
